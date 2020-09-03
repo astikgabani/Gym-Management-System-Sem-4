@@ -1,0 +1,81 @@
+CREATE TABLE Member (
+    M_ID varchar(255) NOT NULL PRIMARY KEY,
+    Name varchar(255) NOT NULL,
+    MiddleName varchar(255),
+SurName varchar(255),
+MobileNo varchar(255),
+DateOfBirth varchar(255),
+Age int,MaritualStatus int,Address varchar(255),Pin
+varchar(255),Gender varchar(255));
+
+CREATE TABLE Trainer (
+    M_ID varchar(255) NOT NULL PRIMARY KEY,
+    Name varchar(255) NOT NULL,
+    MiddleName varchar(255),
+SurName varchar(255),
+MobileNo varchar(255),
+DateOfBirth varchar(255),
+Age int,MaritualStatus int,Address varchar(255),Pin
+varchar(255),Gender varchar(255));
+
+
+
+CREATE TABLE Physical_Details (
+ M_ID varchar(255),
+date1 Date
+,Weight double
+,Height double
+,Neck double
+,Shoulder double,
+Chest_n double,
+Chest_e double,
+UpperArm double,
+ForeArm double,
+UpperAbdomen double,
+Waist double,
+LowerAbdomen double,
+Hips double,
+Thigh double,
+Calf double,
+WHR double,
+BMI double,
+FOREIGN  KEY (M_ID) REFERENCES Member (M_ID)
+);
+
+CREATE TABLE Offer(
+ Name varchar(255),
+Description varchar(255),Criteria varchar(255),
+
+O_ID varchar(255) NOT NULL PRIMARY KEY
+);
+
+
+CREATE TABLE Visitor(
+ Name varchar(255),
+SurName varchar(255)
+,MobileNo varchar(255),
+DateOfBirth date,
+O_ID varchar(255),
+T_ID varchar(255),
+FOREIGN KEY (O_ID) REFERENCES Offer(O_ID),
+FOREIGN KEY (T_ID) REFERENCES Trainer(T_ID)
+);
+
+CREATE TABLE MemOffer(
+ M_ID varchar(255),
+O_ID varchar(255),
+FOREIGN KEY (M_ID) REFERENCES Member(M_ID),
+FOREIGN KEY (O_ID) REFERENCES Offer(O_ID)
+);
+CREATE TABLE Exercise(
+  E_ID varchar(255) NOT NULL PRIMARY KEY,
+Description varchar(255),Name varchar(255)
+
+
+);
+CREATE TABLE MembExe(
+ M_ID varchar(255),
+E_ID varchar(255),
+FOREIGN KEY (M_ID) REFERENCES Member(M_ID),
+FOREIGN KEY (E_ID) REFERENCES Exercise(E_ID)
+);
